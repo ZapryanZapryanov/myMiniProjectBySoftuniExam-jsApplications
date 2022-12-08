@@ -1,0 +1,1 @@
+# myMiniProjectBySoftuniExam-jsApplications
