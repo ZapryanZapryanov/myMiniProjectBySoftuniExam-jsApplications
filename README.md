@@ -1,8 +1,10 @@
 Online Books Library.
 
-Home page
-![CHEESE!](https://user-images.githubusercontent.com/102177542/206496820-020ec8fa-416e-42f8-bdf5-4cd3f3212968.png)
+Home page as a guest
+![CHEESE!](https://user-images.githubusercontent.com/102177542/206501553-c0cc0034-9bb0-4b29-a1ce-a7821b317bf9.png)
 
+Home page as a user
+![CHEESE!](https://user-images.githubusercontent.com/102177542/206501411-67d4e1e0-6c71-4e10-875a-b43ada7f56a6.png)
 
 Login page
 ![CHEESE!](https://user-images.githubusercontent.com/102177542/206499616-8bc4c734-64a8-4a5b-8b5a-bbd2f9170ad4.png)
@@ -25,7 +27,7 @@ Details on my book
 
 
 Section only for my books
-![CHEESE!](https://user-images.githubusercontent.com/102177542/206500278-75169a80-2a8c-4b8e-acfd-2f42de12a026.png)
+![CHEESE!](https://user-images.githubusercontent.com/102177542/206501017-6830e6db-f5bb-4f46-8acd-f20aec6003b4.png)
 
 
 Create new Book
