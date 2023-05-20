@@ -1,4 +1,4 @@
-import { login } from "../api/api.js"
+
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
 
 
@@ -32,15 +32,21 @@ export function loginView(ctx) {
    console.log('hello')
    let formData = new FormData(e.currentTarget)
 
-   let email = formData.get('email').trim()
+   let user = formData.get('email').trim()
    let password = formData.get('password').trim()
+   let obj = {
+    user,
+    password
+   }
    
-   if (email == '' || password == '') {
+   if (user == '' || password == '') {
     return alert('all field are required!')
    }
-   await login(email, password)
-    ctx.userLogOrNo()
-    ctx.page.redirect('/dashboard')
+   if (user != 'admin' || password != 'Manastir1600-') {
+    return alert('Wrong password or userName, try again !')
+   }
+   sessionStorage.setItem('admin', obj)
+   ctx.userLogOrNo()
   }
 
   

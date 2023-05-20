@@ -1,5 +1,5 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
-import { get, post } from '../api/api.js'
+
 
 const addTemplate = (onSubmit) => html`
 <section id="create-page" class="create">
@@ -13,7 +13,7 @@ const addTemplate = (onSubmit) => html`
                         </span>
                     </p>
                     <p class="field">
-                        <label for="description">Description</label>
+                        <label for="description">Email</label>
                         <span class="input">
                             <textarea name="description" id="description" placeholder="Description"></textarea>
                         </span>
@@ -24,18 +24,7 @@ const addTemplate = (onSubmit) => html`
                             <input type="text" name="imageUrl" id="image" placeholder="Image">
                         </span>
                     </p>
-                    <p class="field">
-                        <label for="type">Type</label>
-                        <span class="input">
-                            <select id="type" name="type">
-                                <option value="Fiction">Fiction</option>
-                                <option value="Romance">Romance</option>
-                                <option value="Mistery">Mistery</option>
-                                <option value="Classic">Clasic</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </span>
-                    </p>
+                   
                     <input class="button submit" type="submit" value="Add Book">
                 </fieldset>
             </form>
@@ -54,22 +43,39 @@ const addTemplate = (onSubmit) => html`
    let title = formData.get('title').trim()
    let description = formData.get('description').trim()
    let imageUrl = formData.get('imageUrl').trim()
-   let type = formData.get('type').trim()
+   
    
    
    let obj  = {
     title,
     description,
     imageUrl,
-    type,
+  
    }
-   if (title == '' || description == '' || imageUrl == '' || type == '') {
+   if (title == '' || description == '' || imageUrl == '') {
     return alert('all field are required!')
     }
-   let result = await post('/data/books', obj)
-    ctx.page.redirect('/dashboard')
+
+
+  fetch('http://194.141.118.43:3030/gallery', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(obj)
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log('Response:', data);
+    // Handle the response data here
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    // Handle any errors here
+  });
+ 
+   
   }
 
   
 }
-    
