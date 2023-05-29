@@ -1,13 +1,31 @@
 import {html, render} from '../../node_modules/lit-html/lit-html.js'
+import { get } from '../api/api.js'
 
-const dashboardTeamplate = () => html`
-<section id="home">
-<h1>Welcome to Sole Mates</h1>
-<a href="https://images.unsplash.com/photo-1519573670974-766525b63443?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm90b2dyYXBoeXxlbnwwfHwwfHw%3D&w=1000&q=80"><img src="image destination"></a>
-<h2>Browse through the shoe collectibles of our users</h2>
-<h3>Add or manage your items</h3>
-</section>`
+/**const dashboardTemplate = (content) => html`
+<section id="dashboard-page" class="dashboard">
+<h1>Dashboard</h1>
+    ${content.length == 0 ? html `<p class="no-books">No books in database!</p>` : 
+    content.map(currTemp)}
+    </section> `
 
-export function dashboardView(ctx) {
-    ctx.render(dashboardTeamplate())
+
+    
+
+    
+
+const currTemp = (currContent) => html`
+<ul class="other-books-list">
+                <li class="otherBooks">
+                    <h3>${currContent.title}</h3>
+                    <p>Type: ${currContent.type}</p>
+                    <p class="img"><img src="${currContent.imageUrl}"></p>
+                    <a class="button" href="/data/books/${currContent._id}">Details</a>
+                </li>
+                </ul>
+`
+
+export async function dashboardView(ctx) {
+  let result = await get('/data/books?sortBy=_createdOn%20desc')
+  ctx.render(dashboardTemplate(result))
 }
+/** */
